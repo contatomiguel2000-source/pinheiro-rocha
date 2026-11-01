@@ -4,6 +4,7 @@ import Image from "next/image";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { beforeAfter, featured, nav, process, projects, services, studio, testimonials, videos, type Category, type Project } from "@/lib/data";
 import { asset } from "@/lib/base-path";
+import { sizes } from "@/lib/sizes";
 import { wrap } from "@/lib/ui";
 import { IconInstagram, IconPin, IconRight, IconWhatsapp } from "./Icons";
 import { Magnetic, RevealImage } from "./FX";
@@ -77,7 +78,7 @@ export function Pinha({ className = "h-7 w-auto" }: { className?: string }) {
 }
 
 /* ---------- cabeçalho com menu em tela cheia ---------- */
-const menuImgs = ["/img/campo-fachada-0.webp", "/img/clinica-1.webp", "/img/padaria-0.webp", "/img/sala-0.webp", "/img/dynafit-0.webp", "/img/laisy.webp", "/img/chale-0.webp"];
+const menuImgs = ["/img/sala-2.webp", "/img/clinica-1.webp", "/img/padaria-0.webp", "/img/sala-0.webp", "/img/dynafit-0.webp", "/img/laisy.webp", "/img/chale-0.webp"];
 
 export function Header() {
   const [open, setOpen] = useState(false);
@@ -155,7 +156,7 @@ export function Header() {
           <div className="relative hidden aspect-[4/5] overflow-hidden rounded-[4px] md:block">
             {open &&
               menuImgs.map((src, i) => (
-                <Image key={src} src={asset(src)} alt="" fill quality={75} sizes="40vw" className={`object-cover transition-[opacity,transform] duration-700 ${hover === i ? "scale-100 opacity-100" : "scale-105 opacity-0"}`} />
+                <Image key={src} src={asset(src)} alt="" fill quality={92} sizes="40vw" className={`object-cover transition-[opacity,transform] duration-700 ${hover === i ? "scale-100 opacity-100" : "scale-105 opacity-0"}`} />
               ))}
           </div>
         </div>
@@ -166,9 +167,9 @@ export function Header() {
 
 /* ---------- topo: fotos de projeto alternando em tela cheia ---------- */
 const heroSlides = [
-  { src: "/img/fachada-2026-0.webp", label: "Residência · projeto 2026" },
+  { src: "/img/sala-0.webp", label: "Sala e cozinha integradas · obra pronta" },
   { src: "/img/clinica-0.webp", label: "Clínica Ceemed · obra pronta" },
-  { src: "/img/campo-fachada-0.webp", label: "Casa de campo · projeto 2025" },
+  { src: "/img/dynafit-0.webp", label: "Academia Dynafit · obra pronta" },
 ];
 
 export function Hero() {
@@ -196,7 +197,7 @@ export function Hero() {
       <div ref={bg} className="absolute inset-0 will-change-transform">
         {heroSlides.map((s, k) => (
           <div key={s.src} className={`absolute inset-0 transition-opacity duration-[1.6s] ${k === i ? "opacity-100" : "opacity-0"}`}>
-            <Image src={asset(s.src)} alt="" fill priority={k === 0} quality={80} sizes="100vw" className={`object-cover ${k === i ? "animate-[slowZoom_7s_ease-out_both]" : ""}`} />
+            <Image src={asset(s.src)} alt="" fill priority={k === 0} quality={92} sizes="100vw" className={`object-cover ${k === i ? "animate-[slowZoom_7s_ease-out_both]" : ""}`} />
           </div>
         ))}
         <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(20,18,16,0.55)_0%,rgba(20,18,16,0.2)_35%,rgba(20,18,16,0.85)_100%)]" />
@@ -266,8 +267,8 @@ export function Manifesto() {
         </ul>
       </div>
       <RevealImage className="relative aspect-[4/5] md:aspect-[5/6]">
-        <Image src={asset("/img/campo-sala-0.webp")} alt="Sala da casa de campo com tijolinho, madeira e parede verde (projeto 3D)" fill quality={88} sizes="(min-width: 768px) 600px, 100vw" className="object-cover" />
-        <span className="absolute bottom-3 left-3 bg-ink/75 px-3 py-1.5 text-[0.72rem] text-[#f1ebe1]">Casa de campo · projeto 3D</span>
+        <Image src={asset("/img/chale-0.webp")} alt="Chalé com madeira e janelas de moldura vermelha, projetado pelo escritório" fill quality={92} sizes="(min-width: 768px) 600px, 100vw" className="object-cover" />
+        <span className="absolute bottom-3 left-3 bg-ink/75 px-3 py-1.5 text-[0.72rem] text-[#f1ebe1]">Chalé · obra pronta</span>
       </RevealImage>
     </div>
   );
@@ -282,7 +283,7 @@ export function Featured() {
         return (
           <div key={id} className="sticky top-0 h-[100svh] overflow-hidden bg-ink" style={{ zIndex: i + 1 }}>
             <button type="button" onClick={() => openProject(id)} className="group absolute inset-0 text-left" data-cursor="Ver projeto" aria-label={`Ver o projeto ${p.title}`}>
-              <Image src={asset(p.cover)} alt={`${p.title}: ${p.kind}`} fill quality={82} sizes="100vw" className="object-cover transition-transform duration-[1.6s] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.03]" />
+              <Image src={asset(p.cover)} alt={`${p.title}: ${p.kind}`} fill quality={92} sizes="100vw" className="object-cover transition-transform duration-[1.6s] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.03]" />
               <span className="absolute inset-0 bg-[linear-gradient(180deg,rgba(20,18,16,0.35)_0%,transparent_30%,transparent_55%,rgba(20,18,16,0.9)_100%)]" />
               <span className={`${wrap} absolute inset-x-0 bottom-0 flex flex-col items-center pb-12 text-center text-[#f1ebe1] md:pb-16`}>
                 <span className="t-label text-[#f1ebe1]/80">
@@ -351,8 +352,8 @@ function ProjectCard({ p, i, span }: { p: Project; i: number; span: string }) {
       className={`group relative h-[24rem] overflow-hidden bg-coal text-left text-[#f1ebe1] transition-[opacity,transform] duration-[900ms] ease-[cubic-bezier(0.16,1,0.3,1)] md:h-[32rem] ${span} ${v ? "opacity-100" : "translate-y-10 opacity-0"}`}
       style={{ transitionDelay: `${(i % 2) * 90}ms` }}
     >
-      <Image src={asset(p.cover)} alt={`${p.title}: ${p.kind}`} fill quality={82} sizes="(min-width: 768px) 700px, 100vw" className="object-cover transition-transform duration-[1.2s] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-105" />
-      <Image src={asset(second)} alt="" fill quality={82} sizes="(min-width: 768px) 700px, 100vw" className="object-cover opacity-0 transition-opacity duration-700 group-hover:opacity-100" />
+      <Image src={asset(p.cover)} alt={`${p.title}: ${p.kind}`} fill quality={92} sizes="(min-width: 768px) 700px, 100vw" className="object-cover transition-transform duration-[1.2s] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-105" />
+      <Image src={asset(second)} alt="" fill quality={92} sizes="(min-width: 768px) 700px, 100vw" className="object-cover opacity-0 transition-opacity duration-700 group-hover:opacity-100" />
       <span className="absolute inset-0 bg-[linear-gradient(180deg,transparent_45%,rgba(20,18,16,0.88)_100%)]" />
       <span className="absolute left-4 top-4 bg-ink/70 px-2.5 py-1 text-[0.68rem] tracking-[0.12em] uppercase">{p.category}</span>
       <span className="absolute inset-x-0 bottom-0 flex items-end justify-between gap-4 p-5 md:p-6">
@@ -435,8 +436,9 @@ function ProjectViewer({ id, start, onClose }: { id: string; start: number; onCl
         }}
       >
         {cur.t === "img" ? (
-          <div key={cur.src} className="absolute inset-0 animate-[fadeUp_0.4s_both]">
-            <Image src={asset(cur.src)} alt={`${p.title}: ${cur.tag ? cur.tag.toLowerCase() : "foto"} ${i + 1}`} fill unoptimized sizes="100vw" className="object-contain" />
+          <div key={cur.src} className="absolute inset-0 flex animate-[fadeUp_0.4s_both] items-center justify-center">
+            {/* tamanho real como teto: foto pequena aparece menor, mas nítida, em vez de esticada */}
+            <Image src={asset(cur.src)} alt={`${p.title}: ${cur.tag ? cur.tag.toLowerCase() : "foto"} ${i + 1}`} width={sizes[cur.src]?.[0] ?? 1440} height={sizes[cur.src]?.[1] ?? 960} unoptimized className="h-auto max-h-full w-auto max-w-full object-contain" />
             {(cur.tag || cur.note) && (
               <span className="absolute bottom-3 left-1/2 flex -translate-x-1/2 gap-2 text-[0.75rem]">
                 {cur.tag && <span className="bg-copper px-2.5 py-1 font-semibold text-ink">{cur.tag}</span>}
@@ -516,9 +518,9 @@ export function BeforeAfter() {
       >
         {beforeAfter.map((b, k) => (
           <div key={b.label} className={`absolute inset-0 transition-opacity duration-500 ${k === t ? "opacity-100" : "opacity-0"}`}>
-            <Image src={asset(b.before)} alt={`${b.label}: antes`} fill quality={85} sizes="(min-width: 768px) 1160px, 100vw" className="object-cover" draggable={false} />
+            <Image src={asset(b.before)} alt={`${b.label}: antes`} fill quality={92} sizes="(min-width: 768px) 1160px, 100vw" className="object-cover" draggable={false} />
             <div className="cut absolute inset-0" style={{ clipPath: `inset(0 0 0 ${x}%)` }}>
-              <Image src={asset(b.after)} alt={`${b.label}: depois`} fill quality={85} sizes="(min-width: 768px) 1160px, 100vw" className="object-cover" draggable={false} />
+              <Image src={asset(b.after)} alt={`${b.label}: depois`} fill quality={92} sizes="(min-width: 768px) 1160px, 100vw" className="object-cover" draggable={false} />
             </div>
           </div>
         ))}
@@ -553,7 +555,7 @@ export function Process() {
       {process.map((s, i) => (
         <div key={s.n} className={`grid items-center gap-6 md:grid-cols-12 md:gap-10 `}>
           <RevealImage className={`relative aspect-[4/3] md:col-span-7 ${i % 2 ? "md:order-2" : ""}`}>
-            <Image src={asset(s.img)} alt={s.t} fill quality={85} sizes="(min-width: 768px) 680px, 100vw" className="object-cover" />
+            <Image src={asset(s.img)} alt={s.t} fill quality={92} sizes="(min-width: 768px) 680px, 100vw" className="object-cover" />
           </RevealImage>
           <div className={`md:col-span-5 ${i % 2 ? "md:order-1 md:text-right" : ""}`}>
             <span className="t-display block text-[clamp(3.5rem,8vw,6.5rem)] leading-none text-cream/20" aria-hidden>{s.n}</span>
@@ -655,7 +657,7 @@ export function Testimonials() {
     <div className="grid items-stretch gap-8 md:grid-cols-[0.85fr_1.15fr] md:gap-14" onPointerEnter={() => setPaused(true)} onPointerLeave={() => setPaused(false)}>
       <div className="relative aspect-[4/5] overflow-hidden bg-coal md:aspect-auto md:min-h-[32rem]">
         {testimonials.map((x, k) => (
-          <Image key={x.name} src={asset(x.img)} alt="" fill quality={82} sizes="(min-width: 768px) 480px, 100vw" className={`object-cover transition-[opacity,transform] duration-[1.2s] ${k === i ? "scale-100 opacity-100" : "scale-110 opacity-0"}`} />
+          <Image key={x.name} src={asset(x.img)} alt="" fill quality={92} sizes="(min-width: 768px) 480px, 100vw" className={`object-cover transition-[opacity,transform] duration-[1.2s] ${k === i ? "scale-100 opacity-100" : "scale-110 opacity-0"}`} />
         ))}
         <span className="absolute bottom-3 left-3 bg-ink/80 px-3 py-1.5 text-[0.72rem] text-[#f1ebe1]">Projeto Pinheiro Rocha</span>
       </div>

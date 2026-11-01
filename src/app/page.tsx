@@ -109,11 +109,11 @@ export default function Home() {
           <div className={`${wrap} grid items-start gap-10 md:grid-cols-[0.9fr_1.1fr] md:gap-16`}>
             <div className="relative">
               <div className="relative aspect-[4/5] overflow-hidden bg-coal">
-                <Image src={asset("/img/laisy.webp")} alt="A arquiteta Laísy Pinheiro Rocha" fill quality={90} sizes="(min-width: 768px) 500px, 100vw" className="object-cover object-[60%_30%]" />
+                <Image src={asset("/img/laisy.webp")} alt="A arquiteta Laísy Pinheiro Rocha" fill quality={92} sizes="(min-width: 768px) 500px, 100vw" className="object-cover object-[60%_30%]" />
               </div>
               <figure className="absolute -bottom-8 right-4 w-[42%] border-4 border-paper bg-paper shadow-xl md:-right-8">
                 <div className="relative aspect-[3/4]">
-                  <Image src={asset("/img/premio-palco.webp")} alt="Laísy no palco do Prêmio Melhores do Ano 2025" fill quality={82} sizes="220px" className="object-cover" />
+                  <Image src={asset("/img/premio-palco.webp")} alt="Laísy no palco do Prêmio Melhores do Ano 2025" fill quality={92} sizes="220px" className="object-cover" />
                 </div>
                 <figcaption className="px-2 py-2 text-[0.7rem] leading-snug text-cream/80">1º lugar · Arquiteta · Melhores do Ano 2025</figcaption>
               </figure>
