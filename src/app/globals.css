@@ -1,0 +1,219 @@
+@import "tailwindcss";
+
+/*
+  Paleta da identidade Pinheiro Rocha (letreiro do escritório e papelaria):
+  - pinha do logo em laranja (#ef8639 na arte oficial do "minha história"; #d08041 no letreiro físico);
+  - letras em grafite quente;
+  - fundo bege/caramelo da arte oficial e da parede do escritório.
+  A base escura vem da referência (Kura), trocando o preto frio pelo grafite do letreiro e o laranja da Kura pelo laranja da pinha.
+  Tons por bloco: .tone-light (areia, texto grafite) e .tone-accent (cobre com texto grafite).
+  Nomes: night = fundo, coal = cartão, cream = texto, gold = destaque, sand = detalhe.
+*/
+:root {
+  --c-bg: #141210;
+  --c-fg: #f1ebe1;
+  --c-card: #1d1a17;
+  --c-line: rgba(241, 235, 225, 0.12);
+  --c-accent: #ec8236;
+  --c-detail: #e4a874;
+}
+.tone-light {
+  --c-bg: #ebe1cf;
+  --c-fg: #22201d;
+  --c-card: #f5f0e7;
+  --c-line: rgba(34, 32, 29, 0.14);
+  --c-detail: #8f4415;
+}
+.tone-accent {
+  --c-bg: #ec8236;
+  --c-fg: #1a1714;
+  --c-line: rgba(26, 23, 20, 0.2);
+  --c-detail: #1a1714;
+}
+
+@theme inline {
+  --color-night: var(--c-bg);
+  --color-coal: var(--c-card);
+  --color-cream: var(--c-fg);
+  --color-line: var(--c-line);
+  --color-wine: var(--c-accent);
+  --color-gold: var(--c-accent);
+  --color-sand: var(--c-detail);
+  --color-ink: #141210;
+  --color-paper: #ebe1cf;
+  --color-copper: #ec8236;
+  --font-sans: var(--font-inter), "Inter", system-ui, sans-serif;
+  --font-display: var(--font-marcellus), "Marcellus SC", Georgia, serif;
+}
+
+body {
+  background: var(--c-bg);
+  color: var(--c-fg);
+  font-family: var(--font-sans);
+}
+.tone-light,
+.tone-accent {
+  background: var(--c-bg);
+  color: var(--c-fg);
+}
+
+section[id] {
+  scroll-margin-top: 4.5rem;
+}
+
+@media (pointer: fine) {
+  html.lenis,
+  html.lenis body,
+  html.lenis a,
+  html.lenis button,
+  html.lenis select,
+  html.lenis input,
+  html.lenis textarea {
+    cursor: none;
+  }
+}
+
+@layer components {
+  /* versalete larga, como o letreiro "Pinheiro Rocha" */
+  .t-display {
+    font-family: var(--font-display);
+    font-weight: 400;
+    letter-spacing: 0.02em;
+    line-height: 1.04;
+  }
+  .t-hero {
+    font-size: clamp(2.3rem, 5.6vw, 5rem);
+  }
+  .t-h1 {
+    font-size: clamp(1.9rem, 3.8vw, 3.3rem);
+  }
+  .t-h3 {
+    font-size: clamp(1.15rem, 1.7vw, 1.5rem);
+  }
+  .t-label {
+    font-size: 0.72rem;
+    font-weight: 500;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+  }
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    border-radius: 2px;
+    padding: 0.85rem 1.4rem;
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    transition:
+      background-color 0.3s,
+      color 0.3s,
+      transform 0.3s,
+      border-color 0.3s;
+  }
+  .btn-copper {
+    background: #ec8236;
+    color: #1a1714;
+  }
+  .btn-copper:hover {
+    background: #f39550;
+    transform: translateY(-2px);
+  }
+  .btn-solid {
+    background: var(--c-fg);
+    color: var(--c-bg);
+  }
+  .btn-solid:hover {
+    transform: translateY(-2px);
+  }
+  .btn-line {
+    border: 1px solid var(--c-line);
+  }
+  .btn-line:hover {
+    border-color: var(--c-accent);
+    color: var(--c-accent);
+  }
+  .no-scrollbar {
+    scrollbar-width: none;
+  }
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+@keyframes riseIn {
+  from {
+    transform: translateY(110%);
+  }
+  to {
+    transform: none;
+  }
+}
+@keyframes slowZoom {
+  from {
+    transform: scale(1.12);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+@keyframes marquee {
+  to {
+    transform: translateX(-50%);
+  }
+}
+@keyframes nudge {
+  0%,
+  100% {
+    transform: none;
+  }
+  50% {
+    transform: translateX(5px);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .animate-\[marquee_40s_linear_infinite\] {
+    animation: none;
+  }
+}
+
+/* trecho entre *asteriscos* nos títulos (Split): sai em cobre, como o destaque do letreiro */
+.t-serif {
+  color: var(--c-accent);
+}
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition:
+    opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.reveal.is-visible {
+  opacity: 1;
+  transform: none;
+}
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    opacity: 1;
+    transform: none;
+  }
+}
+@keyframes fill {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
