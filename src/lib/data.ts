@@ -224,7 +224,7 @@ export const process = [
     n: "01",
     t: "Escuta e visita",
     d: "Ir até o lugar, entender a rotina, o terreno e o sonho de quem vai morar ou trabalhar ali. Presencial em Bom Jardim de Minas, Juiz de Fora e região, ou online.",
-    img: "/img/visita-obra.webp",
+    img: "/img/atendimento.webp",
   },
   {
     n: "02",
